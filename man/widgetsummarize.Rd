@@ -25,6 +25,12 @@ widgetsummarize(
 \item{column}{For \code{sum} and \code{mean} statistics, the column of \code{data} to summarize.
 Not used for \code{count} statistic.}
 
+\item{statistic2}{Optional. If provided, summarises parameter \code{column2}, which becomes
+a denominator of \code{column}.}
+
+\item{column2}{For \code{sum} and \code{mean} statistics, the column of \code{data} to summarize.
+Not used for \code{count} statistic.}
+
 \item{selection}{Expression to select a fixed subset of \code{data}. May be
 a logical vector or a one-sided formula that evaluates to a logical vector.
 If used, the \code{key} given to \link[crosstalk:SharedData]{crosstalk::SharedData} must be a fixed column (not row numbers).}
@@ -35,7 +41,8 @@ If used, the \code{key} given to \link[crosstalk:SharedData]{crosstalk::SharedDa
 A \code{widgetsummarize} displays a single statistic derived from a linked table.
 Its primary use is with the \code{crosstalk} package. Used with \code{crosstalk},
 a \code{widgetsummarize} displays a value which updates as the data selection
-changes.
+changes. For percentages and weighted average summaries, provide parameters 'statistic2'
+and 'column2'.
 }
 \seealso{
 \url{https://kent37.github.io/summarywidget}

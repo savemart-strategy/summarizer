@@ -29,7 +29,11 @@ HTMLWidgets.widget({
         } else {
           for (i=0; i<x.settings.crosstalk_key.length; i++) {
             data[x.settings.crosstalk_key[i]] = x.data[x.settings.column][i];
-            data2[x.settings.crosstalk_key[i]] = x.data[x.settings.column2][i];
+            if (x.settings.column2 !== null) {
+              data2[x.settings.crosstalk_key[i]] = x.data[x.settings.column2][i];
+            } else {
+              data2 = []; //empty array if column2 was not defined
+            }
           }
         }
 
@@ -64,6 +68,27 @@ HTMLWidgets.widget({
           console.log(values);
           console.log(values2);
 
+          function nFormatter(num, digits) {
+            var si = [
+              { value: 1, symbol: "" },
+              { value: 1E3, symbol: "k" },
+              { value: 1E6, symbol: "M" },
+              { value: 1E9, symbol: "G" },
+              { value: 1E12, symbol: "T" },
+              { value: 1E15, symbol: "P" },
+              { value: 1E18, symbol: "E" }
+            ];
+            var rx = /\.0+$|(\.[0-9]*[1-9])0+$/;
+            var i;
+            for (i = si.length - 1; i > 0; i--) {
+              if (num >= si[i].value) {
+                break;
+              }
+            }
+            return (num / si[i].value).toFixed(digits).replace(rx, "$1") + si[i].symbol;
+          }
+
+
           var value = 0;
           switch (x.settings.statistic) {
             case 'count':
@@ -89,13 +114,9 @@ HTMLWidgets.widget({
               break;
           }
           if (x.settings.column2 !== null) {
-            if (x.settings.digits !== null) {
-              value = value.toFixed(x.settings.digits);
-              value2 = value2.toFixed(x.settings.digits);
-            }
-              el.innerText = value/value2;
+            el.innerText =  nFormatter(value/value2, x.settings.digits);
           } else {
-            el.innerText = value;
+            el.innerText = nFormatter(value, x.settings.digits);
           }
        };
 

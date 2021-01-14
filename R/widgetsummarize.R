@@ -68,7 +68,6 @@ widgetsummarize <- function(data,
   } else {
     if (!(column %in% colnames(data)))
       stop("No ", column, " column in data.")
-    #data = data[[column]]
   }
 
   # forward options using x
