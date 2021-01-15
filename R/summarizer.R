@@ -20,6 +20,8 @@
 #' @param digits Number of decimal places to display, or NULL to display full precision.
 #' @param prefix text to be placed before the result number (e.g '$').
 #' @param suffix text to be placed after the result number (e.g '%', '/month').
+#' @param width width of the widget (in px).
+#' @param height height of the widget (in px).
 #' @param elementId custom HTML ID for the returning widget.
 #'
 #' @import crosstalk
@@ -30,7 +32,7 @@ summarizer <- function(data,
                           statistic=c("count", "sum", "mean"), column = NULL,
                           statistic2=c("count", "sum", "mean", NULL), column2 = NULL,
                           selection=NULL, digits=0, prefix=NULL, suffix=NULL,
-                          width=NULL, height=NULL, elementId = NULL) {
+                          width=250, height=65, elementId = NULL) {
 
   #validate statitic arguments
   statistic <- match.arg(statistic)
@@ -101,6 +103,7 @@ summarizer <- function(data,
     )
   )
 
+
   # create widget
   htmlwidgets::createWidget(
     name = 'summarizer',
@@ -109,6 +112,15 @@ summarizer <- function(data,
     height = height,
     package = 'summarizer',
     elementId = elementId,
-    dependencies = crosstalk::crosstalkLibs()
+    dependencies = crosstalk::crosstalkLibs(),
+    sizingPolicy = htmlwidgets::sizingPolicy(
+      knitr.defaultWidth = width,
+      knitr.defaultHeight = height,
+      browser.defaultWidth = width,
+      browser.defaultHeight = height,
+      defaultWidth = width,
+      defaultHeight = height,
+      browser.fill = F
+    )
   )
 }

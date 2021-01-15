@@ -14,8 +14,8 @@ summarizer(
   digits = 0,
   prefix = NULL,
   suffix = NULL,
-  width = NULL,
-  height = NULL,
+  width = 250,
+  height = 65,
   elementId = NULL
 )
 }
@@ -42,6 +42,10 @@ If used, the \code{key} given to \link[crosstalk:SharedData]{crosstalk::SharedDa
 \item{prefix}{text to be placed before the result number (e.g '$').}
 
 \item{suffix}{text to be placed after the result number (e.g '\%', '/month').}
+
+\item{width}{width of the widget (in px).}
+
+\item{height}{height of the widget (in px).}
 
 \item{elementId}{custom HTML ID for the returning widget.}
 }

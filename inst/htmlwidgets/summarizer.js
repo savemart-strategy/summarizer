@@ -3,7 +3,6 @@ HTMLWidgets.widget({
   type: 'output',
 
   factory: function(el, width, height) {
-
     // Filter obj, returning a new obj containing only
     // values with keys in keys.
     var filterKeys = function(obj, keys) {
@@ -135,7 +134,7 @@ HTMLWidgets.widget({
       },
 
       resize: function(width, height) {
-
+          summarizer.resize();
         // TODO: code to re-render the widget with a new size
 
       }
