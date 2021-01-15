@@ -58,10 +58,10 @@ summarizer <- function(data,
     if (!(column %in% colnames(data)))
       stop("No ", column, " column in data.")
   }
-  if((is.null(statistic2) & !is.null(column2)) |
-     (!is.null(statistic2) & is.null(column2))){
-    stop("Column2 must be provided with statistic2")
-  }
+
+  # if((is.null(statistic2) & !is.null(column2)) | (!is.null(statistic2) & is.null(column2))) {
+  #   stop("Column2 must be provided with statistic2")
+  # }
 
   # If selection is given, apply it
   if (!is.null(selection)) {
