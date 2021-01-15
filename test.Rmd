@@ -1,0 +1,29 @@
+---
+title: "summarizer"
+output:
+  flexdashboard::flex_dashboard:
+    orientation: rows
+    vertical_layout: scroll
+---
+
+### summary
+
+```{r summary}
+devtools::document()
+devtools::install()
+
+library(summarizer)
+library(crosstalk)
+
+sh_df <- SharedData$new(iris)
+
+bscols(
+  filter_select('species', 'Species', sh_df, ~Species),
+  paste0("Result of Sepal.Length / Sepal.Width: "),
+  summarizer(sh_df, 
+                  statistic = 'sum', column = 'Sepal.Length', 
+                  statistic2 = 'sum', column2 = 'Sepal.Width',
+                  digits = 2)
+)
+```
+

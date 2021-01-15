@@ -1,5 +1,5 @@
 HTMLWidgets.widget({
-  name: 'widgetsummarize',
+  name: 'summarizer',
   type: 'output',
 
   factory: function(el, width, height) {
@@ -53,6 +53,7 @@ HTMLWidgets.widget({
               values2.push(d2[key2]);}
           }
 
+          //format result
           function nFormatter(num, digits) {
             var si = [
               { value: 1, symbol: "" },
@@ -97,10 +98,15 @@ HTMLWidgets.widget({
               value2 = values2.reduce(function(acc, val) {return acc + val;}, 0) / values2.length;
               break;
           }
+          var resultNumber = 0;
+          var prefix = x.settings.prefix;
+          var suffix = x.settings.suffix;
           if (x.settings.column2 !== null) {
-            el.innerText =  nFormatter(value/value2, x.settings.digits);
+            resultNumber = nFormatter(value/value2, x.settings.digits);
+            el.innerText =  prefix + resultNumber + suffix;
           } else {
-            el.innerText = nFormatter(value, x.settings.digits);
+            resultNumber = nFormatter(value, x.settings.digits);
+            el.innerText = prefix + resultNumber + suffix;
           }
        };
 
