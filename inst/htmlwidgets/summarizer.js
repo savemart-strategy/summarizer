@@ -70,6 +70,16 @@ HTMLWidgets.widget({
                 break;
               }
             }
+
+            switch (x.settings.format_result) {
+            case 'currency':
+              return ('$' + num.toFixed(digits));
+            case 'percent':
+              return (Number(num*100).toFixed(digits) + '%');
+            case 'decimal':
+              num = (num / si[i].value).toFixed(digits).replace(rx, "$1") + si[i].symbol;
+              return (num);
+          }
             return (num / si[i].value).toFixed(digits).replace(rx, "$1") + si[i].symbol;
           }
 
@@ -97,15 +107,18 @@ HTMLWidgets.widget({
               value2 = values2.reduce(function(acc, val) {return acc + val;}, 0) / values2.length;
               break;
           }
+
+          //final result formatting
           var resultNumber = 0;
           var prefix = x.settings.prefix;
           var suffix = x.settings.suffix;
           if (x.settings.column2 !== null) {
-            resultNumber = nFormatter(value/value2, x.settings.digits);
-            el.innerText =  prefix + resultNumber + suffix;
+            value = value/value2;
+            value = nFormatter(value, x.settings.digits);
+            el.innerText =  prefix + value + suffix;
           } else {
-            resultNumber = nFormatter(value, x.settings.digits);
-            el.innerText = prefix + resultNumber + suffix;
+            value = nFormatter(value, x.settings.digits);
+            el.innerText = prefix + value + suffix;
           }
        };
 

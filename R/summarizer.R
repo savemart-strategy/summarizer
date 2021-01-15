@@ -31,12 +31,18 @@
 summarizer <- function(data,
                           statistic=c("count", "sum", "mean"), column = NULL,
                           statistic2=c("count", "sum", "mean", NULL), column2 = NULL,
+                          format_result=c("decimal", "currency", "percent"),
                           selection=NULL, digits=0, prefix=NULL, suffix=NULL,
                           width=250, height=65, elementId = NULL) {
 
   #validate statitic arguments
   statistic <- match.arg(statistic)
   statistic2 <- match.arg(statistic2)
+
+  if (is.null(format_result)) {
+    format_result <- 'decimal'
+  }
+  format_result <- match.arg(format_result)
 
   #crosstalk keys and group
   if (crosstalk::is.SharedData(data)) {
@@ -95,6 +101,7 @@ summarizer <- function(data,
       statistic2 = statistic2,
       column = column,
       column2 = column2,
+      format_result = format_result,
       digits = digits,
       prefix = prefix,
       suffix = suffix,

@@ -10,6 +10,7 @@ summarizer(
   column = NULL,
   statistic2 = c("count", "sum", "mean", NULL),
   column2 = NULL,
+  format_result = c("decimal", "currency", "percent"),
   selection = NULL,
   digits = 0,
   prefix = NULL,
