@@ -6,7 +6,7 @@
 \usage{
 summarizer(
   data,
-  statistic = c("count", "sum", "mean"),
+  statistic = c("count", "unique_count", "sum", "mean"),
   column = NULL,
   statistic2 = c("count", "unique_count", "sum", "mean", NULL),
   column2 = NULL,

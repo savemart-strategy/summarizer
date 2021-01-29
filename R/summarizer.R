@@ -29,11 +29,11 @@
 #'
 #' @export
 summarizer <- function(data,
-                          statistic=c("count", "unique_count", "sum", "mean"), column = NULL,
-                          statistic2=c("count", "unique_count", "sum", "mean", NULL), column2 = NULL,
-                          format_result=c("decimal", "currency", "percent"),
-                          selection=NULL, digits=0, prefix=NULL, suffix=NULL,
-                          width=100, height=40, elementId = NULL) {
+                       statistic=c("count", "unique_count", "sum", "mean"), column = NULL,
+                       statistic2=c("count", "unique_count", "sum", "mean", NULL), column2 = NULL,
+                       format_result=c("decimal", "currency", "percent"),
+                       selection=NULL, digits=0, prefix=NULL, suffix=NULL,
+                       width=100, height=40, elementId = NULL) {
 
   #validate statitic arguments
   statistic <- match.arg(statistic)
@@ -77,8 +77,6 @@ summarizer <- function(data,
       data <- data[c(column, column2)]
     }
   }
-
-
 
   # if((is.null(statistic2) & !is.null(column2)) | (!is.null(statistic2) & is.null(column2))) {
   #   stop("Column2 must be provided with statistic2")

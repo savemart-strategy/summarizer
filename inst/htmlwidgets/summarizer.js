@@ -83,13 +83,19 @@ HTMLWidgets.widget({
             return (num / si[i].value).toFixed(digits).replace(rx, "$1") + si[i].symbol;
           }
 
+          function countUnique(arr) {
+            return new Set(arr).size;
+          }
+
           var value = 0;
           switch (x.settings.statistic) {
             case 'count':
               value = values.length;
               break;
             case 'unique_count':
-              value = new Set(values).size;
+              value = countUnique(values);
+              console.log(values);
+              console.log(value);
               break;
             case 'sum':
               value = values.reduce(function(acc, val) {return acc + val;}, 0);
@@ -104,7 +110,9 @@ HTMLWidgets.widget({
               value2 = values2.length;
               break;
             case 'unique_count':
-              value = new Set(values2).size;
+              value2 = countUnique(values2);
+              console.log(values2);
+              console.log(value2);
               break;
             case 'sum':
               value2 = values2.reduce(function(acc, val) {return acc + val;}, 0);
