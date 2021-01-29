@@ -14,16 +14,46 @@ devtools::install()
 
 library(summarizer)
 library(crosstalk)
+library(htmltools)
+```
 
+
+```{r}
 sh_df <- SharedData$new(iris)
 
 bscols(
   filter_select('species', 'Species', sh_df, ~Species),
-  paste0("Result of Sepal.Length / Sepal.Width: "),
-  summarizer(sh_df, 
-                  statistic = 'sum', column = 'Sepal.Length', 
-                  statistic2 = 'sum', column2 = 'Sepal.Width',
-                  digits = 2)
+  paste0("Result of Sepal.Length / Sepal.Width: ")
 )
 ```
 
+Row
+--------------------------------------------------------------------------------
+
+### Sales ($K)
+
+```{r vb_sales, echo = FALSE}
+valueBoxSummarizer(
+  summarizer(sh_df,
+             statistic = 'sum', column = 'Sepal.Length',
+             statistic2 = 'sum', column2 = 'Sepal.Width',
+             digits = 2
+             ),
+  color = "primary", #"rgba(0, 150, 136, 0.7)",
+  icon = "fa-dollar-sign"
+)
+```
+
+### Orders
+
+```{r vb2, echo = FALSE}
+valueBoxSummarizer(
+  summarizer(sh_df,
+             statistic = 'sum', column = 'Sepal.Length',
+             statistic2 = 'sum', column2 = 'Sepal.Width',
+             digits = 2
+             ),
+  color = "primary", #"rgba(0, 150, 136, 0.7)",
+  icon = "fa-dollar-sign"
+)
+```

@@ -15,8 +15,8 @@ summarizer(
   digits = 0,
   prefix = NULL,
   suffix = NULL,
-  width = 250,
-  height = 65,
+  width = 100,
+  height = 40,
   elementId = NULL
 )
 }

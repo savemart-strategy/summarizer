@@ -33,7 +33,7 @@ summarizer <- function(data,
                           statistic2=c("count", "sum", "mean", NULL), column2 = NULL,
                           format_result=c("decimal", "currency", "percent"),
                           selection=NULL, digits=0, prefix=NULL, suffix=NULL,
-                          width=250, height=65, elementId = NULL) {
+                          width=100, height=40, elementId = NULL) {
 
   #validate statitic arguments
   statistic <- match.arg(statistic)
@@ -66,6 +66,19 @@ summarizer <- function(data,
     if (!(column %in% colnames(data)))
       stop("No ", column, " column in data.")
   }
+
+  if (is.null(column2)) {
+    data <- data[column]
+  } else {
+    #validate colummn2 arguments
+    if (!(column2 %in% colnames(data))){
+      stop("No ", column2, " column in data.")
+    } else {
+      data <- data[c(column, column2)]
+    }
+  }
+
+
 
   # if((is.null(statistic2) & !is.null(column2)) | (!is.null(statistic2) & is.null(column2))) {
   #   stop("Column2 must be provided with statistic2")
@@ -109,7 +122,6 @@ summarizer <- function(data,
       crosstalk_group = group
     )
   )
-
 
   # create widget
   htmlwidgets::createWidget(
