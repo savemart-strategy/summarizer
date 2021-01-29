@@ -9,8 +9,8 @@ output:
 ### summary
 
 ```{r summary}
-devtools::document()
-devtools::install()
+# devtools::document()
+# devtools::install()
 
 library(summarizer)
 library(crosstalk)

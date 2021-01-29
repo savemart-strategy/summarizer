@@ -88,6 +88,9 @@ HTMLWidgets.widget({
             case 'count':
               value = values.length;
               break;
+            case 'unique_count':
+              value = new Set(values).size;
+              break;
             case 'sum':
               value = values.reduce(function(acc, val) {return acc + val;}, 0);
               break;
@@ -99,6 +102,9 @@ HTMLWidgets.widget({
           switch (x.settings.statistic2) {
             case 'count':
               value2 = values2.length;
+              break;
+            case 'unique_count':
+              value = new Set(values2).size;
               break;
             case 'sum':
               value2 = values2.reduce(function(acc, val) {return acc + val;}, 0);
