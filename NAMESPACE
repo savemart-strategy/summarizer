@@ -3,4 +3,5 @@
 export(summarizer)
 export(valueBoxSummarizer)
 import(crosstalk)
+import(htmltools)
 import(htmlwidgets)

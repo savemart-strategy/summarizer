@@ -14,6 +14,7 @@
 #'
 #' @import crosstalk
 #' @import htmlwidgets
+#' @import htmltools
 #'
 #' @export
 
@@ -30,7 +31,7 @@ valueBoxSummarizer <- function (value, caption = NULL,
                            `data-color` = color,
                            `data-href` = href,
                            value,
-                           tags$script(src = "./inst/htmlwidgets/lib/valueboxSummarizer.js"))
+                           htmltools::includeScript("./inst/htmlwidgets/lib/valueboxSummarizer.js"))
 
   hasPrefix <- function(x, prefix) {
     if (!is.null(x))

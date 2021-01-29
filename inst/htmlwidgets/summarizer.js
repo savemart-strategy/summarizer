@@ -82,11 +82,12 @@ HTMLWidgets.widget({
           }
             return (num / si[i].value).toFixed(digits).replace(rx, "$1") + si[i].symbol;
           }
-
+          //function for unique counts
           function countUnique(arr) {
             return new Set(arr).size;
           }
 
+          //apply summarization to column
           var value = 0;
           switch (x.settings.statistic) {
             case 'count':
@@ -94,8 +95,6 @@ HTMLWidgets.widget({
               break;
             case 'unique_count':
               value = countUnique(values);
-              console.log(values);
-              console.log(value);
               break;
             case 'sum':
               value = values.reduce(function(acc, val) {return acc + val;}, 0);
@@ -104,6 +103,7 @@ HTMLWidgets.widget({
               value = values.reduce(function(acc, val) {return acc + val;}, 0) / values.length;
               break;
           }
+          //apply summarization to column2
           var value2 = 0;
           switch (x.settings.statistic2) {
             case 'count':
@@ -111,8 +111,6 @@ HTMLWidgets.widget({
               break;
             case 'unique_count':
               value2 = countUnique(values2);
-              console.log(values2);
-              console.log(value2);
               break;
             case 'sum':
               value2 = values2.reduce(function(acc, val) {return acc + val;}, 0);
