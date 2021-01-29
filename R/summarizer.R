@@ -29,7 +29,7 @@
 #'
 #' @export
 summarizer <- function(data,
-                          statistic=c("count", "sum", "mean"), column = NULL,
+                          statistic=c("count", "unique_count", "sum", "mean"), column = NULL,
                           statistic2=c("count", "unique_count", "sum", "mean", NULL), column2 = NULL,
                           format_result=c("decimal", "currency", "percent"),
                           selection=NULL, digits=0, prefix=NULL, suffix=NULL,
